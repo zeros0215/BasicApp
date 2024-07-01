@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "997703397009",
+    "project_id": "basicapp-60dfd",
+    "storage_bucket": "basicapp-60dfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997703397009:android:a0520490aeb4166c8d5930",
+        "android_client_info": {
+          "package_name": "com.study.basicapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbWJI89ydMIjYub87sRnkBXkNWeb_YX74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_basiclist"
+        android:icon="@drawable/free_icon_list"
+        android:title="@string/basic_list"/>
+
+    <item
+        android:id="@+id/navigation_locallist"
+        android:icon="@drawable/free_icon_favorites_list"
+        android:title="@string/local_list"/>
+
+    <item
+        android:id="@+id/navigation_basicwebview"
+        android:icon="@drawable/free_icon_webview"
+        android:title="@string/basic_webview"/>
+</menu>
