@@ -6,9 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.study.basicapp.R
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class SplashActivity : AppCompatActivity(){
 
     private val splashTimeOut: Long = 3000 // 3초

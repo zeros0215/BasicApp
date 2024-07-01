@@ -1,4 +1,4 @@
-package com.study.basicapp.ui.basiclist
+package com.study.basicapp.ui.remotelist
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,16 +9,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.MyApplication
 import com.study.basicapp.R
-import com.study.basicapp.ui.basiclist.model.user_item
+import com.study.basicapp.ui.remotelist.model.user_item
 
-class BasicListAdapter : RecyclerView.Adapter<BasicListAdapter.ViewHolder>() {
+class RemoteListAdapter : RecyclerView.Adapter<RemoteListAdapter.ViewHolder>() {
 
-    private val TAG = "BasicListAdapter"
+    private val TAG = "RemoteListAdapter"
     private lateinit var itemView : View
     private var items : List<user_item> = ArrayList()
     val userDao = MyApplication.database?.userDao()
 
-    private lateinit var listener: BasicListAdapter.OnItemClickListener
+    private lateinit var listener: RemoteListAdapter.OnItemClickListener
     interface OnItemClickListener{
         fun OnClick(v: View, position: Int)
         fun OnIconClick(v: View, position: Int)
@@ -28,7 +28,7 @@ class BasicListAdapter : RecyclerView.Adapter<BasicListAdapter.ViewHolder>() {
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasicListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RemoteListAdapter.ViewHolder {
 
         itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.item_user,
@@ -41,7 +41,7 @@ class BasicListAdapter : RecyclerView.Adapter<BasicListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d(TAG, "position: " + position)
-        Log.d(TAG, "items[position].url_small: " + items[position].name)
+        Log.d(TAG, "items[position].name: " + items[position].name)
 
         holder.name.text = items[position].name
         holder.number.text = items[position].number

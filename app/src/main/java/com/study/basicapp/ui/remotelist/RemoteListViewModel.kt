@@ -1,23 +1,23 @@
-package com.study.basicapp.ui.basiclist
+package com.study.basicapp.ui.remotelist
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.study.basicapp.MyApplication
 import com.study.basicapp.local.UserEntity
-import com.study.basicapp.ui.basiclist.model.user_item
-import com.study.hybridbasic.model.users
+import com.study.basicapp.ui.remotelist.model.user_item
+import com.study.hybridbasic.model.UsersDto
 import com.study.hybridbasic.remote.RetrofitClient
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BasicListViewModel : ViewModel(){
 
-    private val TAG = "BasicListViewModel"
+class RemoteListViewModel : ViewModel(){
+
+    private val TAG = "RemoteListViewModel"
     private val list = mutableListOf<user_item>()
     var liveData : MutableLiveData<List<user_item>> = MutableLiveData<List<user_item>>()
     private val itemPage = mutableListOf<List<user_item>>()
@@ -30,8 +30,8 @@ class BasicListViewModel : ViewModel(){
 
     private fun loadRemoteUser() {
         Log.d(TAG, "loadRemoteUser")
-        RetrofitClient.instance.getUsers().enqueue(object : Callback<List<users>>{
-            override fun onResponse(call: Call<List<users>>, response: Response<List<users>>) {
+        RetrofitClient.instance.getUsers().enqueue(object : Callback<List<UsersDto>>{
+            override fun onResponse(call: Call<List<UsersDto>>, response: Response<List<UsersDto>>) {
                 if (response.isSuccessful) {
                     val users = response.body()
                     users?.forEach {
@@ -45,7 +45,7 @@ class BasicListViewModel : ViewModel(){
                 }
             }
 
-            override fun onFailure(call: Call<List<users>>, t: Throwable) {
+            override fun onFailure(call: Call<List<UsersDto>>, t: Throwable) {
                 Log.e(TAG, "Error: ${t.message}")
             }
         })

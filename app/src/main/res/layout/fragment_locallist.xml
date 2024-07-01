@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:ctrl="http://schemas.android.com/apk/res-auto"
 xmlns:gas="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
-tools:context=".ui.basiclist.BasicFragment">
+tools:context=".ui.remotelist.RemoteListFragment">
 
 <data>
     <variable

@@ -5,7 +5,6 @@ import android.content.Context
 import android.util.Log
 import androidx.room.Room
 import com.study.basicapp.local.AppDatabase
-import dagger.hilt.android.HiltAndroidApp
 
 /*
 @HiltAndoridApp 어노테이션을 달아줌으로써, 컴파일 타임 시 표준 컴포넌트 빌딩에 필요한 클래스들을 초기화를 해줍니다.
@@ -15,7 +14,6 @@ import dagger.hilt.android.HiltAndroidApp
 
 androidmanifest => android:name=".MyApplication" 추가
 */
-@HiltAndroidApp
 class MyApplication : Application(){
     private val TAG = "MyApplication"
 

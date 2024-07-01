@@ -3,19 +3,15 @@ package com.study.basicapp.ui.locallist
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.study.basicapp.MyApplication
-import com.study.basicapp.local.UserEntity
-import com.study.basicapp.ui.basiclist.model.user_item
-import com.study.hybridbasic.model.users
-import com.study.hybridbasic.remote.RetrofitClient
+import com.study.basicapp.ui.remotelist.model.user_item
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import javax.inject.Inject
 
-class LocalListViewModel : ViewModel(){
+
+class LocalListViewModel: ViewModel(){
 
     private val TAG = "LocalListViewModel"
     private val list = mutableListOf<user_item>()

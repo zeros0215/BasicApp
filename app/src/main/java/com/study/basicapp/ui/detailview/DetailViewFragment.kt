@@ -11,9 +11,7 @@ import com.study.basicapp.R
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentDetailviewBinding
 import com.study.basicapp.ui.detailview.model.DetailViewItem
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class DetailViewFragment : BaseFragment(){
 
     private val TAG = "DetailViewFragment"
@@ -31,8 +29,8 @@ class DetailViewFragment : BaseFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detailview, container, false)
-
+        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detailview, container, false)
+        binding = FragmentDetailviewBinding.inflate(inflater, container, false)
         initViewModel()
         initUI()
         return binding.root

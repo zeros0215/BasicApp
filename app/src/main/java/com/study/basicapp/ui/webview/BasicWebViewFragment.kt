@@ -53,8 +53,8 @@ class BasicWebViewFragment : BaseWebViewFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //binding = FragmentBasicwebviewBinding.inflate(inflater, container, false)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_basicwebview, container, false)
+        binding = FragmentBasicwebviewBinding.inflate(inflater, container, false)
+        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_basicwebview, container, false)
         binding.viewModel = viewModel
 
         // 인터넷 연결상태 확인 후, 연결이 안되어있다면 앱 종료

@@ -1,6 +1,6 @@
 package com.study.hybridbasic.model
 
-data class users(
+data class UsersDto(
     val address: Address?,
     val company: Company?,
     val email: String?,

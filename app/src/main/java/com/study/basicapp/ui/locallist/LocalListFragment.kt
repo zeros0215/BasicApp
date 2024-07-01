@@ -1,4 +1,4 @@
-package com.study.basicapp.ui.basiclist
+package com.study.basicapp.ui.remotelist
 
 import android.os.Bundle
 import android.util.Log
@@ -6,26 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.study.basicapp.R
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentLocallistBinding
-import com.study.basicapp.ui.basiclist.model.user_item
+import com.study.basicapp.ui.remotelist.model.user_item
 import com.study.basicapp.ui.locallist.LocalListViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class LocalListFragment : BaseFragment(){
 
     private val TAG = "LocalListFragment"
     private lateinit var binding : FragmentLocallistBinding
 
     private var localListAdapter : LocalListAdapter? = null
-    //private val basicListViewModel: BasicListViewModel by viewModels()
+    //private val basicListViewModel: RemoteListViewModel by viewModels()
     private lateinit var localListViewModel: LocalListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,9 +34,9 @@ class LocalListFragment : BaseFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //binding = FragmentBasiclistBinding.inflate(inflater, container, false)
+        binding = FragmentLocallistBinding.inflate(inflater, container, false)
         Log.d(TAG, "onCreateView")
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_locallist, container, false)
+        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_locallist, container, false)
 
         initViewModel()
         initRecyclerView()

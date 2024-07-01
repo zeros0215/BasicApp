@@ -1,4 +1,4 @@
-package com.study.basicapp.ui.basiclist.model
+package com.study.basicapp.ui.remotelist.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

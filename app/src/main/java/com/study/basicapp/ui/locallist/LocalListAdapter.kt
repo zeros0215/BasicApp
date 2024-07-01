@@ -1,4 +1,4 @@
-package com.study.basicapp.ui.basiclist
+package com.study.basicapp.ui.remotelist
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.R
-import com.study.basicapp.ui.basiclist.model.user_item
+import com.study.basicapp.ui.remotelist.model.user_item
 
 class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
@@ -40,7 +40,7 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d(TAG, "position: " + position)
-        Log.d(TAG, "items[position].url_small: " + items[position].name)
+        Log.d(TAG, "items[position].name: " + items[position].name)
 
         holder.name.text = items[position].name
         holder.number.text = items[position].number

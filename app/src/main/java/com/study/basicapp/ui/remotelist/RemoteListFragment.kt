@@ -1,4 +1,4 @@
-package com.study.basicapp.ui.basiclist
+package com.study.basicapp.ui.remotelist
 
 import android.os.Bundle
 import android.util.Log
@@ -14,19 +14,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.R
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentBasiclistBinding
-import com.study.basicapp.ui.basiclist.model.user_item
+import com.study.basicapp.ui.remotelist.model.user_item
 import com.study.basicapp.ui.detailview.DetailViewFragment
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class BasicFragment : BaseFragment(){
+class RemoteListFragment : BaseFragment(){
 
-    private val TAG = "BasicFragment"
+    private val TAG = "RemoteListFragment"
     private lateinit var binding : FragmentBasiclistBinding
 
-    private var basicListAdapter : BasicListAdapter? = null
-    //private val basicListViewModel: BasicListViewModel by viewModels()
-    private lateinit var basicListViewModel: BasicListViewModel
+    private var remoteListAdapter : RemoteListAdapter? = null
+    //private val remoteListViewModel: RemoteListViewModel by viewModels()
+    private lateinit var remoteListViewModel: RemoteListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,12 +61,12 @@ class BasicFragment : BaseFragment(){
     }
 
     override fun initViewModel() {
-        basicListViewModel = ViewModelProvider(this).get(BasicListViewModel::class.java)
-        binding.viewModel = basicListViewModel
+        remoteListViewModel = ViewModelProvider(this).get(RemoteListViewModel::class.java)
+        binding.viewModel = remoteListViewModel
 
         binding.viewModel!!.liveData.observe(getViewLifecycleOwner(), Observer {
-            basicListAdapter!!.setItem(it)
-            basicListAdapter!!.notifyDataSetChanged()
+            remoteListAdapter!!.setItem(it)
+            remoteListAdapter!!.notifyDataSetChanged()
             Log.d(TAG, "it.size: " + it.size)
         })
 
@@ -77,11 +75,11 @@ class BasicFragment : BaseFragment(){
 
     override fun initRecyclerView() {
         var layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        basicListAdapter = BasicListAdapter()
-        basicListAdapter!!.setOnItemClickListener(object :BasicListAdapter.OnItemClickListener{
+        remoteListAdapter = RemoteListAdapter()
+        remoteListAdapter!!.setOnItemClickListener(object :RemoteListAdapter.OnItemClickListener{
             override fun OnClick(v: View, position: Int) {
                 Log.d(TAG, "OnClick position: " + position)
-                val items : user_item = basicListAdapter!!.getItem(position)
+                val items : user_item = remoteListAdapter!!.getItem(position)
                 Toast.makeText(requireContext(), items.toString() , Toast.LENGTH_SHORT).show()
 
                 val bundle = Bundle()
@@ -99,14 +97,14 @@ class BasicFragment : BaseFragment(){
 
             override fun OnIconClick(v: View, position: Int) {
                 Log.d(TAG, "OnIconClick position: " + position)
-                val items : user_item = basicListAdapter!!.getItem(position)
+                val items : user_item = remoteListAdapter!!.getItem(position)
                 Toast.makeText(requireContext(), items.toString() , Toast.LENGTH_SHORT).show()
-                basicListViewModel.isertToDbItem(items)
+                remoteListViewModel.isertToDbItem(items)
             }
         })
 
         binding.basicList.setLayoutManager(layoutManager)
-        binding.basicList.setAdapter(basicListAdapter)
+        binding.basicList.setAdapter(remoteListAdapter)
     }
 
     override fun initUI() {

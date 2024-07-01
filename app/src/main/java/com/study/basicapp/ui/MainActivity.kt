@@ -10,12 +10,10 @@ import androidx.core.content.ContextCompat
 import com.study.basicapp.R
 import com.study.basicapp.common.BaseActivity
 import com.study.basicapp.databinding.ActivityMainBinding
-import com.study.basicapp.ui.basiclist.BasicFragment
-import com.study.basicapp.ui.basiclist.LocalListFragment
+import com.study.basicapp.ui.remotelist.RemoteListFragment
+import com.study.basicapp.ui.remotelist.LocalListFragment
 import com.study.basicapp.ui.webview.BasicWebViewFragment
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : BaseActivity() {
     companion object{
         private val TAG = "MainActivity"
@@ -33,7 +31,7 @@ class MainActivity : BaseActivity() {
         initGrantPermission()
 
         getSupportFragmentManager().beginTransaction()
-            .replace(R.id.fragment_container, BasicFragment())
+            .replace(R.id.fragment_container, RemoteListFragment())
             .commit()
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -41,7 +39,7 @@ class MainActivity : BaseActivity() {
                 R.id.navigation_basiclist -> {
                     supportFragmentManager.popBackStackImmediate() //clear all stack
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, BasicFragment()).commit()
+                        .replace(R.id.fragment_container, RemoteListFragment()).commit()
                     true
                 }
 
