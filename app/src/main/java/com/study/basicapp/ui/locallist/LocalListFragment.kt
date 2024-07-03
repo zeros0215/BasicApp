@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentLocallistBinding
 import com.study.basicapp.ui.remotelist.model.user_item
 import com.study.basicapp.ui.locallist.LocalListViewModel
+import com.study.basicapp.utils.Utils
 
 class LocalListFragment : BaseFragment(){
 
@@ -21,8 +23,9 @@ class LocalListFragment : BaseFragment(){
     private lateinit var binding : FragmentLocallistBinding
 
     private var localListAdapter : LocalListAdapter? = null
-    //private val basicListViewModel: RemoteListViewModel by viewModels()
-    private lateinit var localListViewModel: LocalListViewModel
+    //    private lateinit var localListViewModel: LocalListViewModel
+    //    localListViewModel = ViewModelProvider(this).get(LocalListViewModel::class.java)
+    private val localListViewModel: LocalListViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,10 +40,12 @@ class LocalListFragment : BaseFragment(){
         binding = FragmentLocallistBinding.inflate(inflater, container, false)
         Log.d(TAG, "onCreateView")
         //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_locallist, container, false)
+        Log.d(TAG, " TIME:  " + Utils.getCurrentTime())
 
         initViewModel()
         initRecyclerView()
         //initUiControl()
+        testOnly()
         return binding.root
     }
 
@@ -76,9 +81,8 @@ class LocalListFragment : BaseFragment(){
 
     override fun initViewModel() {
         Log.d(TAG, "initViewModel")
-        localListViewModel = ViewModelProvider(this).get(LocalListViewModel::class.java)
+        //localListViewModel = ViewModelProvider(this).get(LocalListViewModel::class.java)
         binding.viewModel = localListViewModel
-
         binding.viewModel!!.liveData.observe(getViewLifecycleOwner(), Observer {
             localListAdapter!!.setItem(it)
             localListAdapter!!.notifyDataSetChanged()
@@ -111,6 +115,11 @@ class LocalListFragment : BaseFragment(){
 
     override fun initUI() {
         //TODO("Not yet implemented")
+    }
+
+    fun testOnly(){
+        Utils.getCurrentTime()
+
     }
 
 

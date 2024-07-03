@@ -1,4 +1,4 @@
-package com.study.basicapp.local
+package com.study.basicapp.database
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -13,12 +13,12 @@ interface UserDao {
     @Delete
     suspend fun deleteUser(user: UserEntity)
 
-    @Query("DELETE FROM user WHERE name = :selectName")
+    @Query("DELETE FROM user_table WHERE name = :selectName")
     suspend fun deleteUserByName(selectName: String)
 
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM user_table")
     suspend fun getAllUsers(): List<UserEntity>
 
-    @Query("SELECT * FROM user WHERE name = :selectName")
+    @Query("SELECT * FROM user_table WHERE name = :selectName")
     fun selectUserName(selectName: String): Boolean
 }

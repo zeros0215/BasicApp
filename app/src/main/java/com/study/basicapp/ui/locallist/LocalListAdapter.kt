@@ -16,7 +16,6 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
     private lateinit var itemView : View
     private var items : List<user_item> = ArrayList()
 
-
     private lateinit var listener: LocalListAdapter.OnItemClickListener
     interface OnItemClickListener{
         fun OnClick(v: View, position: Int)
@@ -34,7 +33,6 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
             parent,
             false
         )
-
         return ViewHolder(itemView)
     }
 

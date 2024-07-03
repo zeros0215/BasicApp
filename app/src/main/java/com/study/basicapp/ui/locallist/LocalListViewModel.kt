@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.study.basicapp.MyApplication
+import com.study.basicapp.database.DatabaseManager
 import com.study.basicapp.ui.remotelist.model.user_item
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,7 +19,7 @@ class LocalListViewModel: ViewModel(){
     var liveData : MutableLiveData<List<user_item>> = MutableLiveData<List<user_item>>()
     private val itemPage = mutableListOf<List<user_item>>()
     val searchLiveDate : MutableLiveData<String> = MutableLiveData<String>()
-    val userDao = MyApplication.database?.userDao()
+    val userDao = DatabaseManager.database?.userTable()
 
     init {
         Log.d(TAG, "LocalListViewModel init")
@@ -55,7 +56,7 @@ class LocalListViewModel: ViewModel(){
     }
 
     fun deleteToDbItem(item: user_item) {
-        val userDao = MyApplication.database?.userDao()
+        val userDao = DatabaseManager.database?.userTable()
         viewModelScope.launch {
             item.name?.let { userDao?.deleteUserByName(it) }
         }

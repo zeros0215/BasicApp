@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,8 +24,9 @@ class RemoteListFragment : BaseFragment(){
     private lateinit var binding : FragmentBasiclistBinding
 
     private var remoteListAdapter : RemoteListAdapter? = null
-    //private val remoteListViewModel: RemoteListViewModel by viewModels()
-    private lateinit var remoteListViewModel: RemoteListViewModel
+//    private lateinit var remoteListViewModel: RemoteListViewModel
+//    remoteListViewModel = ViewModelProvider(this).get(RemoteListViewModel::class.java)
+    private val remoteListViewModel: RemoteListViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,7 +63,7 @@ class RemoteListFragment : BaseFragment(){
     }
 
     override fun initViewModel() {
-        remoteListViewModel = ViewModelProvider(this).get(RemoteListViewModel::class.java)
+        //remoteListViewModel = ViewModelProvider(this).get(RemoteListViewModel::class.java)
         binding.viewModel = remoteListViewModel
 
         binding.viewModel!!.liveData.observe(getViewLifecycleOwner(), Observer {

@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import com.study.basicapp.local.AppDatabase
+import com.study.basicapp.database.AppDatabase
+import com.study.basicapp.database.DatabaseManager
+import com.study.basicapp.preferences.PreferencesManager
 
 /*
 @HiltAndoridApp 어노테이션을 달아줌으로써, 컴파일 타임 시 표준 컴포넌트 빌딩에 필요한 클래스들을 초기화를 해줍니다.
@@ -23,7 +25,7 @@ class MyApplication : Application(){
 
     companion object{
         lateinit var instance  : MyApplication
-        var database: AppDatabase? = null
+        //var database: AppDatabase? = null
 
         fun applicationContext() : Context{
             return instance.applicationContext
@@ -35,11 +37,14 @@ class MyApplication : Application(){
         super.onCreate()
         Log.d(TAG, "Application onCreate")
 
+        DatabaseManager.init(this)
+        PreferencesManager.init(this)
+
         //For Room
-        database = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "app_rooms.db"
-        ).build()
+//        database = Room.databaseBuilder(
+//            applicationContext,
+//            AppDatabase::class.java, "app_rooms.db"
+//        ).build()
 
     }
 

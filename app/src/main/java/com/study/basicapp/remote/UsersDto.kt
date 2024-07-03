@@ -1,4 +1,4 @@
-package com.study.hybridbasic.model
+package com.study.basicapp.remote
 
 data class UsersDto(
     val address: Address?,

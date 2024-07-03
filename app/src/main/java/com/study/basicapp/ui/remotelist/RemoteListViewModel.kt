@@ -5,9 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.study.basicapp.MyApplication
-import com.study.basicapp.local.UserEntity
+import com.study.basicapp.database.DatabaseManager
+import com.study.basicapp.database.UserEntity
+import com.study.basicapp.remote.UsersDto
 import com.study.basicapp.ui.remotelist.model.user_item
-import com.study.hybridbasic.model.UsersDto
 import com.study.hybridbasic.remote.RetrofitClient
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -67,7 +68,7 @@ class RemoteListViewModel : ViewModel(){
     }
 
     fun isertToDbItem(item: user_item) {
-        val userDao = MyApplication.database?.userDao()
+        val userDao = DatabaseManager.database?.userTable()
         viewModelScope.launch {
             userDao?.insertUser(UserEntity(0, item.name, item.number))
         }

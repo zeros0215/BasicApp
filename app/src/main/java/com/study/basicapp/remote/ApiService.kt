@@ -1,14 +1,22 @@
 package com.study.data.datasource.remote.api
 
 //import com.study.domain.model.Image
-import com.study.hybridbasic.model.UsersDto
+import com.study.basicapp.remote.UsersDto
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
 
+    //API가 https://jsonplaceholder.typicode.com/users
     @GET("users")
     fun getUsers(): Call<List<UsersDto>>
+
+    // GET 요청 예제
+    //API가 https://jsonplaceholder.typicode.com/users/{id}
+    @GET("users/{id}")
+    fun getUserId(@Path("id") userId: Int): Call<UsersDto>
+
 
 }
 
