@@ -17,7 +17,9 @@ import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentBasiclistBinding
 import com.study.basicapp.ui.remotelist.model.user_item
 import com.study.basicapp.ui.detailview.DetailViewFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RemoteListFragment : BaseFragment(){
 
     private val TAG = "RemoteListFragment"

@@ -8,7 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.study.basicapp.R
 import com.study.basicapp.databinding.FragmentBasiclistBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 abstract class BaseFragment : Fragment() {
 
     //private lateinit var binding : FragmentBasiclistBinding

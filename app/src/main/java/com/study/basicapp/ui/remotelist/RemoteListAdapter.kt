@@ -9,15 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.MyApplication
 import com.study.basicapp.R
-import com.study.basicapp.database.DatabaseManager
 import com.study.basicapp.ui.remotelist.model.user_item
+import dagger.hilt.android.AndroidEntryPoint
 
 class RemoteListAdapter : RecyclerView.Adapter<RemoteListAdapter.ViewHolder>() {
 
     private val TAG = "RemoteListAdapter"
     private lateinit var itemView : View
     private var items : List<user_item> = ArrayList()
-    val userDao = DatabaseManager.database?.userTable()
 
     private lateinit var listener: RemoteListAdapter.OnItemClickListener
     interface OnItemClickListener{

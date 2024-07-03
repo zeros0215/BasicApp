@@ -15,6 +15,7 @@ object  PreferencesManager {
         sharedPreferences = context.getSharedPreferences(BASIC_APP_PREF, Context.MODE_PRIVATE)
     }
 
+
     fun setUsername(name : String = ""){
         sharedPreferences.edit().putString(PRE_KEY_USERNAME, name).apply()
     }

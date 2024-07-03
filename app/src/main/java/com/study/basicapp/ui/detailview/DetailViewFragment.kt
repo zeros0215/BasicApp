@@ -11,7 +11,9 @@ import com.study.basicapp.R
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentDetailviewBinding
 import com.study.basicapp.ui.detailview.model.DetailViewItem
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailViewFragment : BaseFragment(){
 
     private val TAG = "DetailViewFragment"

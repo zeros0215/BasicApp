@@ -36,7 +36,9 @@ import com.study.basicapp.ui.webview.model.WebViewModel
 import com.study.basicapp.webview.nativbridge.AndroidBridge
 import com.study.basicapp.webview.nativbridge.NativeBridge
 import com.study.hybridbasic.common.Constants
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BasicWebViewFragment : BaseWebViewFragment() {
 
     private val TAG = "BasicWebViewFragment"

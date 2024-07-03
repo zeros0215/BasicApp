@@ -13,7 +13,9 @@ import com.study.basicapp.databinding.ActivityMainBinding
 import com.study.basicapp.ui.remotelist.RemoteListFragment
 import com.study.basicapp.ui.remotelist.LocalListFragment
 import com.study.basicapp.ui.webview.BasicWebViewFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
     companion object{
         private val TAG = "MainActivity"

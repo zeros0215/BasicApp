@@ -9,14 +9,21 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentLocallistBinding
+import com.study.basicapp.repository.UserTableRespository
 import com.study.basicapp.ui.remotelist.model.user_item
 import com.study.basicapp.ui.locallist.LocalListViewModel
 import com.study.basicapp.utils.Utils
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LocalListFragment : BaseFragment(){
 
     private val TAG = "LocalListFragment"
@@ -26,6 +33,11 @@ class LocalListFragment : BaseFragment(){
     //    private lateinit var localListViewModel: LocalListViewModel
     //    localListViewModel = ViewModelProvider(this).get(LocalListViewModel::class.java)
     private val localListViewModel: LocalListViewModel by viewModels()
+
+    //    @Inject
+    //    lateinit var respository: UserTableRespository
+    //    @Inject
+    //    lateinit var sharedPreferences: PreferencesHelper
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

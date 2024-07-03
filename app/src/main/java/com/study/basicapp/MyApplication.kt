@@ -3,10 +3,8 @@ package com.study.basicapp
 import android.app.Application
 import android.content.Context
 import android.util.Log
-import androidx.room.Room
-import com.study.basicapp.database.AppDatabase
-import com.study.basicapp.database.DatabaseManager
 import com.study.basicapp.preferences.PreferencesManager
+import dagger.hilt.android.HiltAndroidApp
 
 /*
 @HiltAndoridApp 어노테이션을 달아줌으로써, 컴파일 타임 시 표준 컴포넌트 빌딩에 필요한 클래스들을 초기화를 해줍니다.
@@ -16,6 +14,7 @@ import com.study.basicapp.preferences.PreferencesManager
 
 androidmanifest => android:name=".MyApplication" 추가
 */
+@HiltAndroidApp
 class MyApplication : Application(){
     private val TAG = "MyApplication"
 
@@ -37,7 +36,6 @@ class MyApplication : Application(){
         super.onCreate()
         Log.d(TAG, "Application onCreate")
 
-        DatabaseManager.init(this)
         PreferencesManager.init(this)
 
         //For Room
