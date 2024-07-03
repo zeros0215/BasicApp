@@ -1,11 +1,10 @@
-package com.study.basicapp.di
+package com.study.basicapp.di.module
 
 import android.content.Context
 import androidx.room.Room
 import com.study.basicapp.database.AppDatabase
 import com.study.basicapp.database.UserDao
-import com.study.basicapp.repository.UserTableRespository
-import dagger.Binds
+import com.study.basicapp.repository.UserItemRespository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,8 +34,8 @@ object DataBaseModule {
 
     @Provides
     @Singleton
-    fun provideUserTableRepository(userItem: UserDao): UserTableRespository {
-        return UserTableRespository(userItem)
+    fun provideUserItemRepository(userItem: UserDao): UserItemRespository {
+        return UserItemRespository(userItem)
     }
 
 }

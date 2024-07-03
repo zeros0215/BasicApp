@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.study.basicapp.database.UserEntity
 import com.study.basicapp.repository.RemoteRespository
-import com.study.basicapp.repository.UserTableRespository
-import com.study.basicapp.ui.remotelist.model.user_item
+import com.study.basicapp.repository.UserItemRespository
 import com.study.basicapp.remote.UsersDto
+import com.study.basicapp.di.module.DiUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -18,15 +18,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RemoteListViewModel @Inject constructor(
-    private val repository: UserTableRespository,
+    //private val itemRepository: UserItemRespository,
     private val remoteRepository: RemoteRespository
 ) : ViewModel(){
 
     private val TAG = "RemoteListViewModel"
-    private val list = mutableListOf<user_item>()
-    var liveData : MutableLiveData<List<user_item>> = MutableLiveData<List<user_item>>()
-    private val itemPage = mutableListOf<List<user_item>>()
-    val searchLiveDate : MutableLiveData<String> = MutableLiveData<String>()
+    private val list = mutableListOf<UserItem>()
+    var liveData : MutableLiveData<List<UserItem>> = MutableLiveData<List<UserItem>>()
+    //private val itemPage = mutableListOf<List<UserItem>>()
+    //val searchLiveDate : MutableLiveData<String> = MutableLiveData<String>()
+    val itemRepository: UserItemRespository = DiUtil.userItemRepository
 
     init {
         liveData.value = list
@@ -46,7 +47,7 @@ class RemoteListViewModel @Inject constructor(
                         val users = response.body()
                         users?.forEach {
                             Log.d(TAG, "User: $it")
-                            list.add(user_item(it.name, it.phone))
+                            list.add(UserItem(it.name, it.phone))
                         }
                         liveData.value = list
                         liveData.postValue(list)
@@ -62,12 +63,12 @@ class RemoteListViewModel @Inject constructor(
         }
     }
 
-    private fun addItem(item: user_item) {
+    private fun addItem(item: UserItem) {
         list.add(item)
         liveData.value = list
     }
 
-    private fun removeItem(item: user_item) {
+    private fun removeItem(item: UserItem) {
         list.remove(item)
         liveData.value = list
     }
@@ -77,9 +78,9 @@ class RemoteListViewModel @Inject constructor(
         liveData.value = list
     }
 
-    fun isertToDbItem(item: user_item) {
+    fun isertToDbItem(item: UserItem) {
         viewModelScope.launch {
-            repository.insertUser(UserEntity(0, item.name, item.number))
+            itemRepository.insertUser(UserEntity(0, item.name, item.number))
         }
     }
 

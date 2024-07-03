@@ -1,24 +1,25 @@
 package com.study.basicapp.ui.locallist
 
-import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.study.basicapp.repository.UserTableRespository
-import com.study.basicapp.ui.remotelist.model.user_item
+import com.study.basicapp.repository.UserItemRespository
+import com.study.basicapp.ui.remotelist.UserItem
+import com.study.basicapp.di.module.DiUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LocalListViewModel @Inject constructor(
-    private val respository: UserTableRespository
+    //private val respository: UserItemRespository
 ) : ViewModel(){
 
     private val TAG = "LocalListViewModel"
-    private val list = mutableListOf<user_item>()
-    var liveData : MutableLiveData<List<user_item>> = MutableLiveData<List<user_item>>()
+    private val list = mutableListOf<UserItem>()
+    var liveData : MutableLiveData<List<UserItem>> = MutableLiveData<List<UserItem>>()
+    private val respository: UserItemRespository = DiUtil.userItemRepository
 
     init {
         Log.d(TAG, "LocalListViewModel init")
@@ -31,19 +32,19 @@ class LocalListViewModel @Inject constructor(
         viewModelScope.launch {
             val users = respository.getAllUsers()
             users.forEach{
-                list.add(user_item(it.name, it.number))
+                list.add(UserItem(it.name, it.number))
             }
             liveData.value = list
             liveData.postValue(list)
         }
     }
 
-    fun addItem(item: user_item) {
+    fun addItem(item: UserItem) {
         list.add(item)
         liveData.value = list
     }
 
-    fun removeItem(item: user_item) {
+    fun removeItem(item: UserItem) {
         list.remove(item)
         liveData.value = list
     }
@@ -53,7 +54,7 @@ class LocalListViewModel @Inject constructor(
         liveData.value = list
     }
 
-    fun deleteToDbItem(item: user_item) {
+    fun deleteToDbItem(item: UserItem) {
         viewModelScope.launch {
             item.name?.let { respository.deleteUserByName(it) }
         }

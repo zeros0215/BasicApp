@@ -3,7 +3,6 @@ package com.study.basicapp
 import android.app.Application
 import android.content.Context
 import android.util.Log
-import com.study.basicapp.preferences.PreferencesManager
 import dagger.hilt.android.HiltAndroidApp
 
 /*
@@ -35,15 +34,6 @@ class MyApplication : Application(){
     override fun onCreate() {
         super.onCreate()
         Log.d(TAG, "Application onCreate")
-
-        PreferencesManager.init(this)
-
-        //For Room
-//        database = Room.databaseBuilder(
-//            applicationContext,
-//            AppDatabase::class.java, "app_rooms.db"
-//        ).build()
-
     }
 
 }

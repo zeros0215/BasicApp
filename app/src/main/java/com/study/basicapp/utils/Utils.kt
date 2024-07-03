@@ -1,13 +1,21 @@
 package com.study.basicapp.utils
 
-import android.content.Context
-import com.study.basicapp.preferences.PreferencesManager
-import dagger.hilt.android.AndroidEntryPoint
+import android.annotation.SuppressLint
+import android.util.Log
+import com.study.basicapp.repository.PreferencesRepository
+import com.study.basicapp.repository.RemoteRespository
+import com.study.basicapp.repository.UserItemRespository
+import com.study.basicapp.di.module.DiUtil
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import javax.inject.Inject
+
 
 object Utils {
+
+    private val TAG = "Utils"
 
     fun getCurrentTime(): String {
         val now = LocalDateTime.now()
@@ -15,8 +23,27 @@ object Utils {
         return now.format(formatter)
     }
 
-    fun getPrefUserName() : String? {
-        return PreferencesManager.getUsername()
+
+    @SuppressLint("SuspiciousIndentation")
+    fun testDi(){
+
+        val scope = CoroutineScope(Dispatchers.Default)
+            scope.launch {
+                val userItemRepositry : UserItemRespository = DiUtil.userItemRepository
+                Log.d(TAG, "items: " + userItemRepositry.getAllUsers().toString())
+            }
+
+        val scope2 = CoroutineScope(Dispatchers.Default)
+        scope2.launch {
+            val remoteRepositry : RemoteRespository = DiUtil.remoteRepository
+            Log.d(TAG, "remote items: " + remoteRepositry.getUsers().toString())
+        }
+
+        val preferenceRepositry : PreferencesRepository = DiUtil.preferenceRepository
+        preferenceRepositry.setUsername("CHOI choi choi")
+        Log.d(TAG, "preferenceRepositry name: " + preferenceRepositry.getUsername())
+
     }
+
 
 }

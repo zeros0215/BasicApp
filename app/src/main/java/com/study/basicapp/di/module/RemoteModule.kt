@@ -1,4 +1,4 @@
-package com.study.basicapp.di
+package com.study.basicapp.di.module
 
 import com.study.basicapp.repository.RemoteRespository
 import com.study.data.datasource.remote.api.ApiService
@@ -21,7 +21,7 @@ object RemoteModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(RemoteModule.provideBaseUrl())
+            .baseUrl(provideBaseUrl())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

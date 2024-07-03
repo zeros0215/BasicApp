@@ -8,20 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentLocallistBinding
-import com.study.basicapp.repository.UserTableRespository
-import com.study.basicapp.ui.remotelist.model.user_item
 import com.study.basicapp.ui.locallist.LocalListViewModel
 import com.study.basicapp.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LocalListFragment : BaseFragment(){
@@ -108,13 +101,13 @@ class LocalListFragment : BaseFragment(){
         localListAdapter = LocalListAdapter()
         localListAdapter!!.setOnItemClickListener(object :LocalListAdapter.OnItemClickListener{
             override fun OnClick(v: View, position: Int) {
-                val items : user_item = localListAdapter!!.getItem(position)
+                val items : UserItem = localListAdapter!!.getItem(position)
                 Toast.makeText(requireContext(), items.toString() , Toast.LENGTH_SHORT).show()
             }
 
             override fun OnIconClick(v: View, position: Int) {
                 Log.d(TAG, "OnIconClick position: " + position)
-                val items : user_item = localListAdapter!!.getItem(position)
+                val items : UserItem = localListAdapter!!.getItem(position)
                 Toast.makeText(requireContext(), items.toString() , Toast.LENGTH_SHORT).show()
                 localListViewModel.deleteToDbItem(items)
             }
@@ -130,7 +123,7 @@ class LocalListFragment : BaseFragment(){
     }
 
     fun testOnly(){
-        Utils.getCurrentTime()
+        Utils.testDi() //ZEROS TEST
 
     }
 

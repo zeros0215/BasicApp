@@ -8,13 +8,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.R
-import com.study.basicapp.ui.remotelist.model.user_item
 
 class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
     private val TAG = "LocalListAdapter"
     private lateinit var itemView : View
-    private var items : List<user_item> = ArrayList()
+    private var items : List<UserItem> = ArrayList()
 
     private lateinit var listener: LocalListAdapter.OnItemClickListener
     interface OnItemClickListener{
@@ -72,15 +71,15 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
         return items.size
     }
 
-    fun getItem(): List<user_item>{
+    fun getItem(): List<UserItem>{
         return items
     }
 
-    fun setItem(item: List<user_item>){
+    fun setItem(item: List<UserItem>){
         items = item
     }
 
-    fun getItem(position : Int): user_item {
+    fun getItem(position : Int): UserItem {
         return items[position]
     }
 

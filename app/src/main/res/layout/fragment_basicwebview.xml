@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.study.basicapp.ui.webview.model.WebViewModel" />
+            type="com.study.basicapp.ui.webview.WebViewModel" />
     </data>
 
     <FrameLayout

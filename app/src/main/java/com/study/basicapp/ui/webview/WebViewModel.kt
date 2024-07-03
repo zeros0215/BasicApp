@@ -1,4 +1,4 @@
-package com.study.basicapp.ui.webview.model
+package com.study.basicapp.ui.webview
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

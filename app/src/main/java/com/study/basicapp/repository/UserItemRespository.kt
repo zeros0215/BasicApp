@@ -4,7 +4,7 @@ import com.study.basicapp.database.UserDao
 import com.study.basicapp.database.UserEntity
 import javax.inject.Inject
 
-class UserTableRespository @Inject constructor(private val userDao: UserDao){
+class UserItemRespository @Inject constructor(private val userDao: UserDao){
 
     suspend fun insertUser(user : UserEntity){
         userDao.insertUser(user)

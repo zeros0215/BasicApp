@@ -1,11 +1,11 @@
-package com.study.basicapp.ui.remotelist.model
+package com.study.basicapp.ui.remotelist
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-data class user_item(
+data class UserItem(
     val name: String?,
     val number: String?,
 ): Parcelable

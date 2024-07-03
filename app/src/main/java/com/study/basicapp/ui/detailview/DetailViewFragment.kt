@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.study.basicapp.R
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentDetailviewBinding
-import com.study.basicapp.ui.detailview.model.DetailViewItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

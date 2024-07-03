@@ -9,13 +9,11 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.R
 import com.study.basicapp.common.BaseFragment
 import com.study.basicapp.databinding.FragmentBasiclistBinding
-import com.study.basicapp.ui.remotelist.model.user_item
 import com.study.basicapp.ui.detailview.DetailViewFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -83,7 +81,7 @@ class RemoteListFragment : BaseFragment(){
         remoteListAdapter!!.setOnItemClickListener(object :RemoteListAdapter.OnItemClickListener{
             override fun OnClick(v: View, position: Int) {
                 Log.d(TAG, "OnClick position: " + position)
-                val items : user_item = remoteListAdapter!!.getItem(position)
+                val items : UserItem = remoteListAdapter!!.getItem(position)
                 Toast.makeText(requireContext(), items.toString() , Toast.LENGTH_SHORT).show()
 
                 val bundle = Bundle()
@@ -101,7 +99,7 @@ class RemoteListFragment : BaseFragment(){
 
             override fun OnIconClick(v: View, position: Int) {
                 Log.d(TAG, "OnIconClick position: " + position)
-                val items : user_item = remoteListAdapter!!.getItem(position)
+                val items : UserItem = remoteListAdapter!!.getItem(position)
                 Toast.makeText(requireContext(), items.toString() , Toast.LENGTH_SHORT).show()
                 remoteListViewModel.isertToDbItem(items)
             }
