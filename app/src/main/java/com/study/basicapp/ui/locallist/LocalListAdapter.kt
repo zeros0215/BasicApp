@@ -67,7 +67,6 @@ class LocalListAdapter : RecyclerView.Adapter<LocalListAdapter.ViewHolder>() {
 
 
     override fun getItemCount(): Int {
-        Log.d(TAG, "items.size: " + items.size)
         return items.size
     }
 

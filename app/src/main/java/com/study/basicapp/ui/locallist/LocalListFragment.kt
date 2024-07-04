@@ -27,16 +27,6 @@ class LocalListFragment : BaseFragment(){
     //    localListViewModel = ViewModelProvider(this).get(LocalListViewModel::class.java)
     private val localListViewModel: LocalListViewModel by viewModels()
 
-    //    @Inject
-    //    lateinit var respository: UserTableRespository
-    //    @Inject
-    //    lateinit var sharedPreferences: PreferencesHelper
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_basiclist, container, false)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,14 +34,15 @@ class LocalListFragment : BaseFragment(){
     ): View? {
         binding = FragmentLocallistBinding.inflate(inflater, container, false)
         Log.d(TAG, "onCreateView")
-        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_locallist, container, false)
-        Log.d(TAG, " TIME:  " + Utils.getCurrentTime())
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated")
         initViewModel()
         initRecyclerView()
-        //initUiControl()
         testOnly()
-        return binding.root
     }
 
     override fun onStart() {
@@ -89,9 +80,9 @@ class LocalListFragment : BaseFragment(){
         //localListViewModel = ViewModelProvider(this).get(LocalListViewModel::class.java)
         binding.viewModel = localListViewModel
         binding.viewModel!!.liveData.observe(getViewLifecycleOwner(), Observer {
+            Log.d(TAG, "liveData.observe¡¦ it.size: " + it.size)
             localListAdapter!!.setItem(it)
             localListAdapter!!.notifyDataSetChanged()
-            Log.d(TAG, "it.size: " + it.size)
         })
     }
 
@@ -123,7 +114,7 @@ class LocalListFragment : BaseFragment(){
     }
 
     fun testOnly(){
-        Utils.testDi() //ZEROS TEST
+        //Utils.testDi() //ZEROS TEST
 
     }
 

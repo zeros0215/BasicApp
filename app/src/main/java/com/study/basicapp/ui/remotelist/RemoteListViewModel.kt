@@ -31,7 +31,6 @@ class RemoteListViewModel @Inject constructor(
 
     init {
         liveData.value = list
-
         loadRemoteUser()
     }
 

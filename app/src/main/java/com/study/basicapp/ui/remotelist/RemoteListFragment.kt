@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.study.basicapp.R
 import com.study.basicapp.common.BaseFragment
-import com.study.basicapp.databinding.FragmentBasiclistBinding
+import com.study.basicapp.databinding.FragmentRemotelistBinding
 import com.study.basicapp.ui.detailview.DetailViewFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,45 +21,29 @@ import dagger.hilt.android.AndroidEntryPoint
 class RemoteListFragment : BaseFragment(){
 
     private val TAG = "RemoteListFragment"
-    private lateinit var binding : FragmentBasiclistBinding
+    private lateinit var binding : FragmentRemotelistBinding
 
     private var remoteListAdapter : RemoteListAdapter? = null
 //    private lateinit var remoteListViewModel: RemoteListViewModel
 //    remoteListViewModel = ViewModelProvider(this).get(RemoteListViewModel::class.java)
     private val remoteListViewModel: RemoteListViewModel by viewModels()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_basiclist, container, false)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //binding = FragmentBasiclistBinding.inflate(inflater, container, false)
         Log.d(TAG, "onCreateView")
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_basiclist, container, false)
-
-        initViewModel()
-        initRecyclerView()
+        binding = FragmentRemotelistBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onDestroyView() {
-        Log.d(TAG, "onDestroyView")
-        super.onDestroyView()
-    }
-
-    override fun onDetach() {
-        Log.d(TAG, "onDetach")
-        super.onDetach()
-    }
-
-    override fun onPause() {
-        Log.d(TAG, "onPause")
-        super.onPause()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated")
+        initViewModel()
+        initRecyclerView()
+        initUI()
     }
 
     override fun initViewModel() {
@@ -67,13 +51,12 @@ class RemoteListFragment : BaseFragment(){
         binding.viewModel = remoteListViewModel
 
         binding.viewModel!!.liveData.observe(getViewLifecycleOwner(), Observer {
+            Log.d(TAG, "liveData.observe it.size: " + it.size)
             remoteListAdapter!!.setItem(it)
             remoteListAdapter!!.notifyDataSetChanged()
-            Log.d(TAG, "it.size: " + it.size)
         })
 
     }
-
 
     override fun initRecyclerView() {
         var layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -110,7 +93,7 @@ class RemoteListFragment : BaseFragment(){
     }
 
     override fun initUI() {
-        //TODO("Not yet implemented")
+        //current not used
     }
 
 }

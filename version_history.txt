@@ -40,3 +40,6 @@ class LocalListViewModel @Inject constructor(
     //private val respository: UserItemRespository
 ) : ViewModel(){
     private val respository: UserItemRespository = DiUtil.userItemRepository
+
+* Ver 2.0.3(24.07.04)
+- 코드 정리

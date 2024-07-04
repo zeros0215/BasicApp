@@ -50,9 +50,6 @@ class RemoteListAdapter : RecyclerView.Adapter<RemoteListAdapter.ViewHolder>() {
         holder.itemView.setOnClickListener {
             listener.OnClick(it, position)
         }
-
-
-
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -71,7 +68,6 @@ class RemoteListAdapter : RecyclerView.Adapter<RemoteListAdapter.ViewHolder>() {
 
 
     override fun getItemCount(): Int {
-        Log.d(TAG, "items.size: " + items.size)
         return items.size
     }
 

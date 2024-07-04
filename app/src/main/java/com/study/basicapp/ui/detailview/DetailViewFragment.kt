@@ -18,11 +18,6 @@ class DetailViewFragment : BaseFragment(){
     private lateinit var viewItem : DetailViewItem
     private lateinit var detailViewModel : DetailViewModel
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,10 +25,15 @@ class DetailViewFragment : BaseFragment(){
     ): View? {
         //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detailview, container, false)
         binding = FragmentDetailviewBinding.inflate(inflater, container, false)
-        initViewModel()
-        initUI()
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViewModel()
+        initUI()
+    }
+
 
     override fun initViewModel() {
         detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
@@ -43,8 +43,6 @@ class DetailViewFragment : BaseFragment(){
             binding.name.setText(it.name)
             binding.number.setText(it.number)
         })
-
-
     }
 
     override fun initRecyclerView() {

@@ -36,6 +36,7 @@ class LocalListViewModel @Inject constructor(
             }
             liveData.value = list
             liveData.postValue(list)
+            Log.d(TAG, "postValue list: " + list)
         }
     }
 
