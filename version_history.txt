@@ -43,3 +43,8 @@ class LocalListViewModel @Inject constructor(
 
 * Ver 2.0.3(24.07.04)
 - 코드 정리
+
+* Ver 2.0.4(24.07.04)
+- BaseFragment 선언
+ : onViewCreated 에서 직접 함수를 선언하지 않고, abstract 함수만 선언하는 방식으로
+ : BaseFragment 에서 선언할 경우, PARENT에서도 선언하면 중복 호출하는 오류가 발생 할수 있으므로

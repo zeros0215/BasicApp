@@ -30,7 +30,7 @@ class RemoteListViewModel @Inject constructor(
     val itemRepository: UserItemRespository = DiUtil.userItemRepository
 
     init {
-        liveData.value = list
+        //liveData.value = list
         loadRemoteUser()
     }
 
@@ -48,7 +48,6 @@ class RemoteListViewModel @Inject constructor(
                             Log.d(TAG, "User: $it")
                             list.add(UserItem(it.name, it.phone))
                         }
-                        liveData.value = list
                         liveData.postValue(list)
                     }else{
                         Log.e(TAG, "Response not successful: ${response.errorBody()}")
@@ -64,17 +63,17 @@ class RemoteListViewModel @Inject constructor(
 
     private fun addItem(item: UserItem) {
         list.add(item)
-        liveData.value = list
+        liveData.postValue(list)
     }
 
     private fun removeItem(item: UserItem) {
         list.remove(item)
-        liveData.value = list
+        liveData.postValue(list)
     }
 
     private fun clearAllItem(){
         list.clear()
-        liveData.value = list
+        liveData.postValue(list)
     }
 
     fun isertToDbItem(item: UserItem) {

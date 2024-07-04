@@ -1,6 +1,7 @@
 package com.study.basicapp.ui.detailview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,7 @@ class DetailViewFragment : BaseFragment(){
         binding.viewModel = detailViewModel
 
         binding.viewModel?.liveData?.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "liveData.observe¡¦ it.name: " + it.name)
             binding.name.setText(it.name)
             binding.number.setText(it.number)
         })

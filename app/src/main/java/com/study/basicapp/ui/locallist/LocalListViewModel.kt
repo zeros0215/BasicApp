@@ -23,7 +23,7 @@ class LocalListViewModel @Inject constructor(
 
     init {
         Log.d(TAG, "LocalListViewModel init")
-        liveData.value = list
+        //liveData.value = list
         loadLocalUser()
     }
 
@@ -34,7 +34,6 @@ class LocalListViewModel @Inject constructor(
             users.forEach{
                 list.add(UserItem(it.name, it.number))
             }
-            liveData.value = list
             liveData.postValue(list)
             Log.d(TAG, "postValue list: " + list)
         }
@@ -42,17 +41,17 @@ class LocalListViewModel @Inject constructor(
 
     fun addItem(item: UserItem) {
         list.add(item)
-        liveData.value = list
+        liveData.postValue(list)
     }
 
     fun removeItem(item: UserItem) {
         list.remove(item)
-        liveData.value = list
+        liveData.postValue(list)
     }
 
     fun clearAllItem(){
         list.clear()
-        liveData.value = list
+        liveData.postValue(list)
     }
 
     fun deleteToDbItem(item: UserItem) {

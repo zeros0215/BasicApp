@@ -29,9 +29,10 @@ abstract class BaseFragment : Fragment() {
     /*onViewCreated: 뷰가 생성된 후에 호출되며, 뷰와 관련된 추가적인 초기화 작업을 수행합니다.*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel() //For viewmodel
-        initRecyclerView() //For recycler view
-        initUI()
+        /*PARENT에서 두번 호출 되는 경우가 발생함. abstract 함수만 선언하는 방식으로 */
+        //        initViewModel() //For viewmodel
+        //        initRecyclerView() //For recycler view
+        //        initUI()
     }
 
     fun onBackPressed(): Boolean {
